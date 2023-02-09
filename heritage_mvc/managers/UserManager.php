@@ -1,10 +1,13 @@
 <?php
 
+require "managers/AbstractManager.php";
+require "models/User.php";
+
 class UserManager extends AbstractManager{
     
     public function getAllUsers() : array{
         
-        $query = $db->prepare('SELECT * FROM users');
+        $query = $this->db->prepare('SELECT * FROM users');
         $query->execute();
         $loadedUsers = $query->fetchAll(PDO::FETCH_ASSOC);
         

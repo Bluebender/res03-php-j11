@@ -1,38 +1,50 @@
-UserController
-Votre class UserController doit hériter d'AbstractController et contiendra :
-
-1 attribut private :
-
-$manager qui est un UserManager.
-3 méthodes publiques :
-index()
-Utilise son manager pour récupérer la liste complète des utilisateurs de la base de données.
-
-Demande à render d'afficher users/index.phtml avec cette même liste.
-
-create(array $post)
-Si le formulaire de création a été soumis : utilise les champs présents dans $_POST pour appeler son manager qui créera un nouvel User dans la base de données.
-
-Demande à render d'afficher users/create.phtml.
-
-edit(array $post)
-Si le formulaire de modification a été soumis : utilise les champs présents dans $_POST pour appeler son manager qui modifiera le User dans la base de données.
-
-Demande à render d'afficher users/edit.phtml.
 <?php
+
+// require "managers/UserManager.php";
+require "controllers/AbstractController.php";
+require "managers/UserManager.php";
 
 class UserController extends AbstractController {
     
     private UserManager $manager;
     
-    publique function index(){
-        
-    }
-    publique function {
-        
-    }
-    publique function {
-        
+    public function __construct(){
+        $this->manager = new UserManager("db.3wa.io", "3306", "vincentollivier_phpj11", "vincentollivier", "98f74e8350a6f9da22f312f5162d2994");
     }
     
+    public function index(){
+        $users = $this->manager->getAllUsers();
+        $this->render("index", ["users"=>$users]);
+        var_dump ($users);
+    }
+    public function create(){
+        
+    }
+    public function edit(){
+        
+    }
+
+    
+    
+    // public function index()
+    // {
+        
+    //     render("index", ["users"=>$this->manager->getAllUsers()]);
+    // }
+    
+    // public function create(array $post)
+    // {
+    //     $user = new User($post['email'], $post['username'], $post['password']);
+    //     $this->manager-> insertUser($user);
+    //     render("create", ["user"=>$this->manager->insertUser($user)]);
+    // }
+    
+    // public function edit(array $post)
+    // {
+    //     $user = new User($post['email'], $post['username'], $post['password']);
+    //     $this->manager-> editUser($user);
+    //     render("edit", ["user"=>$user]);
+    // }
+}  
+
 ?>
