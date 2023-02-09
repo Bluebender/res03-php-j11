@@ -1,1 +1,26 @@
 # res03-php-j11
+
+- res03-php-j11
+    - models
+        - User.php 
+    - views
+        - users
+            - index.phtml
+            - create.phtml
+            - edit.phtml
+        - layout.phtml
+    - controllers
+        - AbstractController.php 
+        - UserController.php 
+    - managers
+        - AbstractManager.php 
+        - UserManager.php 
+    - assets
+        - styles
+            - css
+            - scss
+        - js
+        - images
+    - services
+        - Router.php 
+    - index.php
